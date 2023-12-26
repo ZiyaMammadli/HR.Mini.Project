@@ -1,0 +1,46 @@
+﻿<Properties StartupConfiguration="{BB8E50F2-967D-4589-AB12-DE1D070C8543}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.HR.Console.App PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HR.Access/Contexts/HRDbContext.cs">
+    <Files>
+      <File FileName="HR.Core/Entities/Company.cs" />
+      <File FileName="HR.Core/Entities/Department.cs" />
+      <File FileName="HR.Core/Entities/Employee.cs" />
+      <File FileName="HR.Core/Interfaces/Ientity.cs" />
+      <File FileName="HR.Access/Contexts/HRDbContext.cs" Line="1" Column="1" />
+      <File FileName="HR.Business/Interfaces/ICompanyService.cs" Line="4" Column="33" />
+      <File FileName="HR.Business/Interfaces/IDepartmentService.cs" Line="4" Column="36" />
+      <File FileName="HR.Business/Interfaces/IEmployeeService.cs" Line="4" Column="34" />
+      <File FileName="HR.Business/Services/CompanyService.cs" Line="6" Column="46" />
+      <File FileName="HR.Business/Services/DepartmentService.cs" Line="41" Column="6" />
+      <File FileName="HR.Business/Services/EmployeeService.cs" Line="6" Column="42" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HR.Project" expanded="True">
+            <Node name="HR.Business">
+              <Node name="Interfaces" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
+            <Node name="HR.Console.App" expanded="True" />
+            <Node name="HR.Core" expanded="True">
+              <Node name="Entities" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
+            </Node>
+            <Node name="HR.DataAccess" expanded="True">
+              <Node name="Contexts" expanded="True">
+                <Node name="HRDbContext.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

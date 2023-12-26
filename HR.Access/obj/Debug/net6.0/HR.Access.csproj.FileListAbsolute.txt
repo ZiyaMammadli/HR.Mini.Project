@@ -1,0 +1,12 @@
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/bin/Debug/net6.0/HR.Access.deps.json
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/bin/Debug/net6.0/HR.Access.dll
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/bin/Debug/net6.0/HR.Access.pdb
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.csproj.AssemblyReference.cache
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.AssemblyInfoInputs.cache
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.AssemblyInfo.cs
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.csproj.CoreCompileInputs.cache
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.dll
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/refint/HR.Access.dll
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/HR.Access.pdb
+/Users/ziyamemmedli/Projects/HR.Project/HR.Access/obj/Debug/net6.0/ref/HR.Access.dll
