@@ -20,27 +20,65 @@ public class CompanyService : ICompanyService
 
     public void Deactive(string? name)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
+        Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Name.ToLower() == name.ToLower());
+        if (dbcompany is null) throw new NotFoundException($"{name} is not found");
+        foreach (var department in HRDbContext.dbDepartments)
+        {
+            if (dbcompany.Id == department.CompanyId)
+            {
+                DepartmentService departmentService = new DepartmentService();
+                departmentService.Deactive(department.Id);
+            }
+        }
+        dbcompany.IsActivate = false;
     }
 
     public void FindCompanyWithId(int? id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException();
+        Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Id == id);
+        if (dbcompany is null) throw new NotFoundException($"{dbcompany} is not found");
+        Console.WriteLine($"Company | Id : {dbcompany.Id} | Name : {dbcompany.Name} |");
     }
 
     public void GetAllDepartment(string? name)
     {
-        throw new NotImplementedException();
+        if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
+        Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Name.ToLower() == name.ToLower());
+        if (dbcompany is null) throw new NotFoundException($"{name} is not found");
+        foreach (var department in HRDbContext.dbDepartments)
+        {
+            if (department.CompanyId == dbcompany.Id)
+            {
+                if (department.IsActivated == true)
+                {
+                    Console.WriteLine(department);
+                }
+            }
+        }
     }
 
     public void ShowAll()
     {
-        throw new NotImplementedException();
+        foreach (var company in HRDbContext.dbCompanies)
+        {
+            if (company.IsActivate == true)
+            {
+                Console.WriteLine($"Company | Id : {company.Id} | Name : {company.Name} |");
+            }
+        }
     }
 
     public void ShowAllCompanyId()
     {
-        throw new NotImplementedException();
+        foreach (var company in HRDbContext.dbCompanies)
+        {
+            if (company.IsActivate == true)
+            {
+                Console.WriteLine($"|Company Id :{company.Id} |");
+            }
+        }
     }
 }
 

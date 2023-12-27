@@ -1,37 +1,38 @@
 ﻿<Properties StartupConfiguration="{BB8E50F2-967D-4589-AB12-DE1D070C8543}|Default">
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HR.Console.App PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.HR.Console.App PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="HR.Business/Services/CompanyService.cs">
     <Files>
       <File FileName="HR.Core/Entities/Company.cs" />
       <File FileName="HR.Core/Entities/Department.cs" />
       <File FileName="HR.Core/Entities/Employee.cs" />
       <File FileName="HR.Business/Interfaces/ICompanyService.cs" />
-      <File FileName="HR.Business/Services/CompanyService.cs" Line="17" Column="35" />
+      <File FileName="HR.Business/Services/CompanyService.cs" Line="70" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HR.Project">
+          <Node name="HR.Project" expanded="True">
             <Node name="HR.Business" expanded="True">
               <Node name="Interfaces" expanded="True" />
               <Node name="Services" expanded="True">
                 <Node name="CompanyService.cs" selected="True" />
               </Node>
+              <Node name="Utilities" expanded="True">
+                <Node name="Exceptions" expanded="True" />
+              </Node>
             </Node>
-            <Node name="HR.Console.App" expanded="True" />
             <Node name="HR.Core" expanded="True">
               <Node name="Entities" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
