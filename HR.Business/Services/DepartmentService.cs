@@ -21,21 +21,28 @@ public class DepartmentService : IDepartmentService
         if (departId is null) throw new ArgumentNullException();
         Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == departId);
         if (dbdepartment is null) throw new NotFoundException($"{departId} is not found");
-        if (dbdepartment.CurrentEmployee < dbdepartment.EmployeeLimit)
+        if (dbdepartment.IsActivated == true)
         {
-            if (dbEmploye.DepartmentId == null)
+            if (dbdepartment.CurrentEmployee < dbdepartment.EmployeeLimit)
             {
-                dbEmploye.DepartmentId = dbdepartment.Id;
-                dbdepartment.CurrentEmployee++;
+                if (dbEmploye.DepartmentId == null)
+                {
+                    dbEmploye.DepartmentId = dbdepartment.Id;
+                    dbdepartment.CurrentEmployee++;
+                }
+                else
+                {
+                    throw new AlreadyWorkOtherDepartment("This Employee already works in another Department");
+                }
             }
             else
             {
-                throw new AlreadyWorkOtherDepartment("This Employee already works in another Department");
+                throw new MaxCapacityAxceeded("Maximum Employee capacity exceeded");
             }
         }
         else
         {
-            throw new MaxCapacityAxceeded("Maximum Employee capacity exceeded");
+            throw new NotFoundException($"{departId} is not found");
         }
     }
 
@@ -97,10 +104,17 @@ public class DepartmentService : IDepartmentService
         if (id is null) throw new ArgumentNullException();
         Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == id);
         if (dbdepartment is null) throw new NotFoundException($"{id} is not found");
-        Console.WriteLine($"Department Id :{dbdepartment.Id}\n" +
+        if (dbdepartment.IsActivated == true)
+        {
+            Console.WriteLine($"Department Id :{dbdepartment.Id}\n" +
                           $"Department Name :{dbdepartment.Name}\n" +
                           $"Current Employee count :{dbdepartment.CurrentEmployee}\n" +
                           $"Max Employee count :{dbdepartment.EmployeeLimit}");
+        }
+        else
+        {
+            throw new NotFoundException($"{id} is not found");
+        }
     }
 
     public void UpdateDepartment(int? departId, string? newName, int employeeLimit)
