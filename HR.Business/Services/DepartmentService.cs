@@ -79,13 +79,20 @@ public class DepartmentService : IDepartmentService
         if (id is null) throw new ArgumentNullException();
         Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == id);
         if (dbdepartment is null) throw new NotFoundException($"{id} is not found");
-        foreach (var employee in HRDbContext.dbEmployees)
+        if (dbdepartment.IsActivated == true)
         {
-            if (dbdepartment.Id == employee.DepartmentId)
+            foreach (var employee in HRDbContext.dbEmployees)
             {
-                Console.WriteLine(employee);
+                if (dbdepartment.Id == employee.DepartmentId)
+                {
+                    Console.WriteLine(employee);
+                }
             }
         }
+        else
+        {
+            throw new NotFoundException($"{id} is not found");
+        }      
     }
 
     public void ShowAll()
@@ -124,16 +131,23 @@ public class DepartmentService : IDepartmentService
         if (dbdepartment is null) throw new NotFoundException($"{departId} is not found");
         if (string.IsNullOrEmpty(newName)) throw new ArgumentNullException();
         Department? dbNewDepartment = HRDbContext.dbDepartments.Find(b => b.Name.ToLower() == newName.ToLower());
-        if (dbNewDepartment?.CompanyId == dbdepartment.CompanyId) throw new AlreadyExistException($"{newName} already is exist");
-        dbdepartment.Name = newName;
-        if (dbdepartment.CurrentEmployee < employeeLimit)
+        if (dbdepartment.IsActivated == true)
         {
-            dbdepartment.EmployeeLimit = employeeLimit;
+            if (dbNewDepartment?.CompanyId == dbdepartment.CompanyId) throw new AlreadyExistException($"{newName} already is exist");
+            dbdepartment.Name = newName;
+            if (dbdepartment.CurrentEmployee < employeeLimit)
+            {
+                dbdepartment.EmployeeLimit = employeeLimit;
+            }
+            else
+            {
+                throw new CurrentEmployyeShouldntMore("Max employee should not be less than current employee.");
+            }
         }
         else
         {
-            throw new CurrentEmployyeShouldntMore("Max employee should not be less than current employee.");
-        }
+            throw new NotFoundException($"{departId} is not found");
+        }       
     }
 }
 

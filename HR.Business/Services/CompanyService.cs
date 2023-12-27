@@ -38,11 +38,15 @@ public class CompanyService : ICompanyService
     {
         if (id is null) throw new ArgumentNullException();
         Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Id == id);
-        if (dbcompany is null) throw new NotFoundException($"{dbcompany} is not found");
+        if (dbcompany is null) throw new NotFoundException($"{id} is not found");
         if (dbcompany.IsActivate == true)
         {
             Console.WriteLine($"Company | Id : {dbcompany.Id} | Name : {dbcompany.Name} |");
-        }       
+        }
+        else
+        {
+            throw new NotFoundException($"{id} is not found");
+        }
     }
 
     public void GetAllDepartment(string? name)
