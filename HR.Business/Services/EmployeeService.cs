@@ -44,22 +44,46 @@ public class EmployeeService : IEmployeeService
 
     public void Deactive(int? id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException();
+        Employee? Dbemploye = HRDbContext.dbEmployees.Find(c => c.Id == id);
+        if (Dbemploye is null) throw new NotFoundException($"{id} is not found");
+        Dbemploye.IsActivate = false;
     }
 
     public void DecreaseEmployeeSalary(int? employeeId, int? decreaseSalary)
     {
-        throw new NotImplementedException();
+        if (employeeId is null) throw new ArgumentNullException();
+        Employee? dbemployee = HRDbContext.dbEmployees.Find(c => c.Id == employeeId);
+        if (dbemployee is null) throw new NotFoundException($"{employeeId} is not found..");
+        if (decreaseSalary is null) throw new ArgumentNullException();
+        if (decreaseSalary < dbemployee.Salary)
+        {
+            dbemployee.Salary = dbemployee.Salary - decreaseSalary;
+        }
+        else
+        {
+            throw new SumİsMoreThanSalary("The reduced amount is more than the employee's current salary");
+        }
     }
 
     public void ShowAll()
     {
-        throw new NotImplementedException();
+        foreach (var employee in HRDbContext.dbEmployees)
+        {
+            if (employee.IsActivate == true)
+            {
+                Console.WriteLine(employee);
+            }
+        }
     }
 
     public void İncreaseEmployeeSalary(int? employeeId, int? increaseSalary)
     {
-        throw new NotImplementedException();
+        if (employeeId is null) throw new ArgumentNullException();
+        Employee? dbemployee = HRDbContext.dbEmployees.Find(c => c.Id == employeeId);
+        if (dbemployee is null) throw new NotFoundException($"{employeeId} is not found..");
+        if (increaseSalary is null) throw new ArgumentNullException();
+        dbemployee.Salary = dbemployee.Salary + increaseSalary;
     }
 }
 

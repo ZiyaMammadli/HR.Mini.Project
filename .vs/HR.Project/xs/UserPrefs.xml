@@ -12,14 +12,17 @@
       <File FileName="HR.Core/Entities/Department.cs" />
       <File FileName="HR.Core/Entities/Employee.cs" />
       <File FileName="HR.Business/Interfaces/IEmployeeService.cs" />
-      <File FileName="HR.Business/Services/EmployeeService.cs" Line="36" Column="45" />
+      <File FileName="HR.Business/Services/EmployeeService.cs" Line="77" Column="10" />
+      <File FileName="HR.Business/Utilities/Exceptions/SumİsMoreThanSalary.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HR.Project" expanded="True">
-            <Node name="HR.Business" expanded="True">
-              <Node name="Services" expanded="True" />
+            <Node name="HR.Business">
+              <Node name="Services" expanded="True">
+                <Node name="EmployeeService.cs" selected="True" />
+              </Node>
               <Node name="Utilities" expanded="True">
                 <Node name="Exceptions" expanded="True" />
               </Node>
