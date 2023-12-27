@@ -8,7 +8,7 @@ namespace HR.Business.Services;
 
 public class CompanyService : ICompanyService
 {
-    public void Create(string name)
+    public void Create(string? name)
     {
         if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
         Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Name.ToLower() == name.ToLower());
@@ -31,7 +31,7 @@ public class CompanyService : ICompanyService
                 departmentService.Deactive(department.Id);
             }
         }
-        dbcompany.IsActivate = false;
+        dbcompany.IsActivate = false; 
     }
 
     public void FindCompanyWithId(int? id)
@@ -39,7 +39,10 @@ public class CompanyService : ICompanyService
         if (id is null) throw new ArgumentNullException();
         Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Id == id);
         if (dbcompany is null) throw new NotFoundException($"{dbcompany} is not found");
-        Console.WriteLine($"Company | Id : {dbcompany.Id} | Name : {dbcompany.Name} |");
+        if (dbcompany.IsActivate == true)
+        {
+            Console.WriteLine($"Company | Id : {dbcompany.Id} | Name : {dbcompany.Name} |");
+        }       
     }
 
     public void GetAllDepartment(string? name)
