@@ -6,23 +6,25 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HR.Business/Services/DepartmentService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HR.Business/Interfaces/ICompanyService.cs">
     <Files>
       <File FileName="HR.Core/Entities/Company.cs" />
       <File FileName="HR.Core/Entities/Department.cs" />
       <File FileName="HR.Core/Entities/Employee.cs" />
       <File FileName="HR.Business/Interfaces/IDepartmentService.cs" />
-      <File FileName="HR.Business/Services/DepartmentService.cs" Line="31" Column="17" />
+      <File FileName="HR.Business/Services/DepartmentService.cs" Line="126" Column="1" />
+      <File FileName="HR.Business/Services/CompanyService.cs" Line="1" Column="1" />
+      <File FileName="HR.Business/Interfaces/ICompanyService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="HR.Project" expanded="True">
-            <Node name="HR.Business">
-              <Node name="Interfaces" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="DepartmentService.cs" selected="True" />
+            <Node name="HR.Business" expanded="True">
+              <Node name="Interfaces" expanded="True">
+                <Node name="ICompanyService.cs" selected="True" />
               </Node>
+              <Node name="Services" expanded="True" />
               <Node name="Utilities" expanded="True">
                 <Node name="Exceptions" expanded="True" />
               </Node>

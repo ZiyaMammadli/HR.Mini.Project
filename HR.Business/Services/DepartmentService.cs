@@ -54,27 +54,72 @@ public class DepartmentService : IDepartmentService
 
     public void Deactive(int? id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException();
+        Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == id);
+        if (dbdepartment is null) throw new NotFoundException($"{id} is not found");
+        foreach (var employee in HRDbContext.dbEmployees)
+        {
+            if (dbdepartment.Id == employee.DepartmentId)
+            {
+                employee.DepartmentId = null;
+            }
+        }
+        dbdepartment.IsActivated = false;
     }
 
     public void GetDepartmentEmployees(int? id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException();
+        Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == id);
+        if (dbdepartment is null) throw new NotFoundException($"{id} is not found");
+        foreach (var employee in HRDbContext.dbEmployees)
+        {
+            if (dbdepartment.Id == employee.DepartmentId)
+            {
+                Console.WriteLine(employee);
+            }
+        }
     }
 
     public void ShowAll()
     {
-        throw new NotImplementedException();
+        foreach (var department in HRDbContext.dbDepartments)
+        {
+            if (department.IsActivated == true)
+            {
+                Console.WriteLine(department);
+            }
+        }
     }
 
     public void ShowDepartmentDetails(int? id)
     {
-        throw new NotImplementedException();
+        if (id is null) throw new ArgumentNullException();
+        Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == id);
+        if (dbdepartment is null) throw new NotFoundException($"{id} is not found");
+        Console.WriteLine($"Department Id :{dbdepartment.Id}\n" +
+                          $"Department Name :{dbdepartment.Name}\n" +
+                          $"Current Employee count :{dbdepartment.CurrentEmployee}\n" +
+                          $"Max Employee count :{dbdepartment.EmployeeLimit}");
     }
 
     public void UpdateDepartment(int? departId, string? newName, int employeeLimit)
     {
-        throw new NotImplementedException();
+        if (departId is null) throw new ArgumentNullException();
+        Department? dbdepartment = HRDbContext.dbDepartments.Find(b => b.Id == departId);
+        if (dbdepartment is null) throw new NotFoundException($"{departId} is not found");
+        if (string.IsNullOrEmpty(newName)) throw new ArgumentNullException();
+        Department? dbNewDepartment = HRDbContext.dbDepartments.Find(b => b.Name.ToLower() == newName.ToLower());
+        if (dbNewDepartment?.CompanyId == dbdepartment.CompanyId) throw new AlreadyExistException($"{newName} already is exist");
+        dbdepartment.Name = newName;
+        if (dbdepartment.CurrentEmployee < employeeLimit)
+        {
+            dbdepartment.EmployeeLimit = employeeLimit;
+        }
+        else
+        {
+            throw new CurrentEmployyeShouldntMore("Max employee should not be less than current employee.");
+        }
     }
 }
 
