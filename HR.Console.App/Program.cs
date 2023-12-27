@@ -307,6 +307,89 @@ if (username == Username && password == Password)
                 case (int)Menu.Show_all_departments:
                     departmentService.ShowAll();
                     break;
+                case (int)Menu.Create_employee:
+                    try
+                    {
+                        Console.WriteLine("Enter new Employee name :");
+                        string? name = Convert.ToString(Console.ReadLine());
+                        Console.WriteLine("Enter new Employee surname :");
+                        string? surname = Convert.ToString(Console.ReadLine());
+                        Console.WriteLine("Enter Salary :");
+                        int salary = Convert.ToInt32(Console.ReadLine());
+                        employeservice.Create(name, surname, salary);
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("-------------------------\n" +
+                                          "The process is successful\n" +
+                                          "-------------------------");
+                        Console.ResetColor();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"-------------------------------\n" +
+                                          $"{ex.Message}\n" +
+                                          $"-------------------------------");
+                        Console.ResetColor();
+                        goto case (int)Menu.Create_employee;
+                    }
+                    break;
+                case (int)Menu.Deactive_employee:
+                    try
+                    {
+                        employeservice.ShowAll();
+                        Console.WriteLine("Enter Employee ID :");
+                        int EmployeeId = Convert.ToInt32(Console.ReadLine());
+                        employeservice.Deactive(EmployeeId);
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("-------------------------\n" +
+                                          "The process is successful\n" +
+                                          "-------------------------");
+                        Console.ResetColor();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"-------------------------------\n" +
+                                          $"{ex.Message}\n" +
+                                          $"-------------------------------");
+                        Console.ResetColor();
+                        goto case (int)Menu.Deactive_employee;
+                    }
+                    break;
+                case (int)Menu.Show_all_employees:
+                    employeservice.ShowAll();
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("-------------------------\n" +
+                                      "The process is successful\n" +
+                                      "-------------------------");
+                    Console.ResetColor();
+                    break;
+                case (int)Menu.Change_department:
+                    try
+                    {
+                        departmentService.ShowAll();
+                        Console.WriteLine("Enter Department ID :");
+                        int departId = Convert.ToInt32(Console.ReadLine());
+                        employeservice.ShowAll();
+                        Console.WriteLine("Enter Employee ID :");
+                        int employeeId = Convert.ToInt32(Console.ReadLine());
+                        employeservice.ChangeDepartment(departId, employeeId);
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("-------------------------\n" +
+                                          "The process is successful\n" +
+                                          "-------------------------");
+                        Console.ResetColor();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"-------------------------------\n" +
+                                          $"{ex.Message}\n" +
+                                          $"-------------------------------");
+                        Console.ResetColor();
+                        goto case (int)Menu.Change_department;
+                    }
+                    break;
 
             }
         else
