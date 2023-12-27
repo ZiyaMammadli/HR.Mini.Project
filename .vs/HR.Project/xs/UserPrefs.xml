@@ -11,7 +11,7 @@
       <File FileName="HR.Core/Entities/Company.cs" />
       <File FileName="HR.Core/Entities/Department.cs" />
       <File FileName="HR.Core/Entities/Employee.cs" />
-      <File FileName="HR.Console.App/Program.cs" Line="132" Column="1" />
+      <File FileName="HR.Console.App/Program.cs" Line="158" Column="1" />
       <File FileName="HR.Business/Utilities/Helper/Enum.cs" />
     </Files>
     <Pads>
