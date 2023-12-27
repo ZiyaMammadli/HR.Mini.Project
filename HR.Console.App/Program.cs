@@ -459,7 +459,7 @@ if (username == Username && password == Password)
                     break;
                 case (int)Menu.Quit:
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Bizi seçdiyiniz üçün təşəkküklər..MADE İN AZERBAİJAN");
+                    Console.WriteLine("Thanks for choosing us..MADE İN AZERBAİJAN");
                     Console.ResetColor();
                     control = false;
                     break;
