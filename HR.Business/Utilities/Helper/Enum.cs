@@ -23,4 +23,8 @@ namespace HR.Business.Utilities.Helper
         Quit                             //Quit
     }                          
 }
-
+public enum SalaryMenu
+{
+    increase = 1,
+    decrease
+}

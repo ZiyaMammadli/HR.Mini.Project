@@ -390,8 +390,81 @@ if (username == Username && password == Password)
                         goto case (int)Menu.Change_department;
                     }
                     break;
-
+                case (int)Menu.Update_Employee_Salary:
+                    Console.WriteLine("1.Increase Salary\n" +
+                                      "2.Decrease Salary\n ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.WriteLine("Enter Serial Number :\n");
+                    Console.ResetColor();
+                    string? ooptionn = Console.ReadLine();
+                    bool checkParsee = int.TryParse(ooptionn, out int ooption);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    if (checkParsee == false) Console.WriteLine("\n" +
+                                                               "<<<< Only number should be entered. >>>>\n" +
+                                                               ""); ;
+                    Console.ResetColor();
+                    switch (ooption)
+                    {
+                        case (int)SalaryMenu.increase:
+                            try
+                            {
+                                employeservice.ShowAll();
+                                Console.WriteLine("Enter Employee ID :");
+                                int? employeeId = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Enter increase Salary :");
+                                int İncreaseSalary = Convert.ToInt32(Console.ReadLine());
+                                employeservice.İncreaseEmployeeSalary(employeeId, İncreaseSalary);
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine("-------------------------\n" +
+                                                  "The process is successful\n" +
+                                                  "-------------------------");
+                                Console.ResetColor();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"-------------------------------\n" +
+                                                  $"{ex.Message}\n" +
+                                                  $"-------------------------------");
+                                Console.ResetColor();
+                                goto case (int)SalaryMenu.increase;
+                            }
+                            break;
+                        case (int)SalaryMenu.decrease:
+                            try
+                            {
+                                employeservice.ShowAll();
+                                Console.WriteLine("Enter Employee ID :");
+                                int? employeId = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Enter Decrease Salary :");
+                                int DecreaseSalary = Convert.ToInt32(Console.ReadLine());
+                                employeservice.DecreaseEmployeeSalary(employeId, DecreaseSalary);
+                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                Console.WriteLine("-------------------------\n" +
+                                                  "The process is successful\n" +
+                                                  "-------------------------");
+                                Console.ResetColor();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine($"-------------------------------\n" +
+                                                  $"{ex.Message}\n" +
+                                                  $"-------------------------------");
+                                Console.ResetColor();
+                                goto case (int)SalaryMenu.decrease;
+                            }
+                            break;
+                    }
+                    break;
+                case (int)Menu.Quit:
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Bizi seçdiyiniz üçün təşəkküklər..MADE İN AZERBAİJAN");
+                    Console.ResetColor();
+                    control = false;
+                    break;
             }
+        }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
