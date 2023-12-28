@@ -131,6 +131,11 @@ if (username == Username && password == Password)
                     break;
                 case (int)Menu.Show_all_company:
                     companyService.ShowAll();
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("-------------------------\n" +
+                                      "The process is successful\n" +
+                                      "-------------------------");
+                    Console.ResetColor();
                     break;
                 case (int)Menu.Find_company_with_id:
                     try
@@ -306,6 +311,11 @@ if (username == Username && password == Password)
                     break;
                 case (int)Menu.Show_all_departments:
                     departmentService.ShowAll();
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("-------------------------\n" +
+                                      "The process is successful\n" +
+                                      "-------------------------");
+                    Console.ResetColor();
                     break;
                 case (int)Menu.Create_employee:
                     try
