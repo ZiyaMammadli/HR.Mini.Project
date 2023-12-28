@@ -6,7 +6,7 @@ using HR.DataAccess.Contexts;
 
 namespace HR.Business.Services;
 
-public class CompanyService : ICompanyService
+public class CompanyService : ICompanyService,ICompanyDepartmentEmployee
 {
     public void Create(string? name)
     {
@@ -86,6 +86,18 @@ public class CompanyService : ICompanyService
                 Console.WriteLine($"|Company Id :{company.Id} |");
             }
         }
+    }
+
+    public bool IsExist()
+    {
+        foreach (var company in HRDbContext.dbCompanies)
+        {
+            if (company.IsActivate == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

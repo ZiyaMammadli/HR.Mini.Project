@@ -87,14 +87,24 @@ if (username == Username && password == Password)
                 case (int)Menu.Deactive_Company:
                     try
                     {
-                        Console.WriteLine("Enter Company name :");
-                        string? name = Convert.ToString(Console.ReadLine());
-                        companyService.Deactive(name);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (companyService.IsExist() == true)
+                        {
+                            Console.WriteLine("Enter Company name :");
+                            string? name = Convert.ToString(Console.ReadLine());
+                            companyService.Deactive(name);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Create a company first and then deactivate it.");
+                            Console.ResetColor();
+                        }
+                        
                     }
                     catch (Exception ex)
                     {

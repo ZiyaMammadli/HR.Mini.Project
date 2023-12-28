@@ -6,7 +6,7 @@ using HR.DataAccess.Contexts;
 
 namespace HR.Business.Services;
 
-public class EmployeeService : IEmployeeService
+public class EmployeeService : IEmployeeService,ICompanyDepartmentEmployee
 {
     private IDepartmentService departmentService { get; }
     public EmployeeService()
@@ -84,6 +84,18 @@ public class EmployeeService : IEmployeeService
         if (dbemployee is null) throw new NotFoundException($"{employeeId} is not found..");
         if (increaseSalary is null) throw new ArgumentNullException();
         dbemployee.Salary = dbemployee.Salary + increaseSalary;
+    }
+
+    public bool IsExist()
+    {
+        foreach (var employee in HRDbContext.dbEmployees)
+        {
+            if (employee.IsActivate == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 

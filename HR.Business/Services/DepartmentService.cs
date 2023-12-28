@@ -6,7 +6,7 @@ using HR.DataAccess.Contexts;
 
 namespace HR.Business.Services;
 
-public class DepartmentService : IDepartmentService
+public class DepartmentService : IDepartmentService,ICompanyDepartmentEmployee
 {
     private ICompanyService companyservice { get; }
     public DepartmentService()
@@ -148,6 +148,18 @@ public class DepartmentService : IDepartmentService
         {
             throw new NotFoundException($"{departId} is not found");
         }       
+    }
+
+    public bool IsExist()
+    {
+        foreach (var department in HRDbContext.dbDepartments)
+        {
+            if (department.IsActivated == true)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
 
