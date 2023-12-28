@@ -394,7 +394,7 @@ if (username == Username && password == Password)
                     Console.WriteLine("1.Increase Salary\n" +
                                       "2.Decrease Salary\n ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Enter Serial Number :\n");
+                    Console.WriteLine("Please enter the serial number of your chosen process :\n");
                     Console.ResetColor();
                     string? ooptionn = Console.ReadLine();
                     bool checkParsee = int.TryParse(ooptionn, out int ooption);

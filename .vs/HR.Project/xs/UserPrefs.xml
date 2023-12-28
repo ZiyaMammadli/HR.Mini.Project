@@ -1,32 +1,38 @@
 ﻿<Properties StartupConfiguration="{BB8E50F2-967D-4589-AB12-DE1D070C8543}|Default">
-  <MonoDevelop.Ide.ItemProperties.HR.Console.App PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HR.Console.App/Program.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="HR.Business/Interfaces/IEmployeeService.cs">
     <Files>
-      <File FileName="HR.Core/Entities/Company.cs" />
+      <File FileName="HR.Core/Entities/Company.cs" Line="15" Column="19" />
       <File FileName="HR.Core/Entities/Department.cs" />
       <File FileName="HR.Core/Entities/Employee.cs" />
-      <File FileName="HR.Console.App/Program.cs" Line="393" Column="1" />
-      <File FileName="HR.Business/Utilities/Helper/Enum.cs" Line="31" Column="1" />
+      <File FileName="HR.Console.App/Program.cs" />
+      <File FileName="HR.Business/Utilities/Helper/Enum.cs" />
+      <File FileName="HR.Business/Services/DepartmentService.cs" />
+      <File FileName="HR.Business/Services/CompanyService.cs" />
+      <File FileName="HR.Business/Services/EmployeeService.cs" Line="1" Column="1" />
+      <File FileName="HR.Business/Interfaces/IEmployeeService.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="HR.Project">
-            <Node name="HR.Console.App" expanded="True">
-              <Node name="Program.cs" selected="True" />
+          <Node name="HR.Project" expanded="True">
+            <Node name="HR.Business" expanded="True">
+              <Node name="Interfaces" expanded="True">
+                <Node name="IEmployeeService.cs" selected="True" />
+              </Node>
             </Node>
-            <Node name="HR.Core" expanded="True">
-              <Node name="Entities" expanded="True" />
-            </Node>
+            <Node name="HR.Console.App" expanded="True" />
+            <Node name="HR.Core" expanded="True" />
+            <Node name="HR.DataAccess" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.HR.Console.App PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>
