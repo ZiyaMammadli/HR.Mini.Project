@@ -227,15 +227,25 @@ if (username == Username && password == Password)
                 case (int)Menu.Deactive_department:
                     try
                     {
-                        departmentService.ShowAll();
-                        Console.WriteLine("Enter Department ID :");
-                        int? departId = Convert.ToInt32(Console.ReadLine());
-                        departmentService.Deactive(departId);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (departmentService.IsExist() == true)
+                        {
+                            departmentService.ShowAll();
+                            Console.WriteLine("Enter Department ID :");
+                            int? departId = Convert.ToInt32(Console.ReadLine());
+                            departmentService.Deactive(departId);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Department\n");
+                            Console.ResetColor();
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -250,18 +260,28 @@ if (username == Username && password == Password)
                 case (int)Menu.Add_employee_to_department:
                     try
                     {
-                        departmentService.ShowAll();
-                        Console.WriteLine("Enter Department ID :");
-                        int? departId = Convert.ToInt32(Console.ReadLine());
-                        employeservice.ShowAll();
-                        Console.WriteLine("Enter Employee ID :");
-                        int employeeId = Convert.ToInt32(Console.ReadLine());
-                        departmentService.AddEmployee(employeeId, departId);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (departmentService.IsExist() == true)
+                        {
+                            departmentService.ShowAll();
+                            Console.WriteLine("Enter Department ID :");
+                            int? departId = Convert.ToInt32(Console.ReadLine());
+                            employeservice.ShowAll();
+                            Console.WriteLine("Enter Employee ID :");
+                            int employeeId = Convert.ToInt32(Console.ReadLine());
+                            departmentService.AddEmployee(employeeId, departId);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Department\n");
+                            Console.ResetColor();
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -276,19 +296,29 @@ if (username == Username && password == Password)
                 case (int)Menu.Update_department:
                     try
                     {
-                        departmentService.ShowAll();
-                        Console.WriteLine("Enter old Department ID :");
-                        int? departId = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Enter new Department name :");
-                        string? newDepartName = Convert.ToString(Console.ReadLine());
-                        Console.WriteLine("Enter new Max Employee count in new Department :");
-                        int employeeLimit = Convert.ToInt32(Console.ReadLine());
-                        departmentService.UpdateDepartment(departId, newDepartName, employeeLimit);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (departmentService.IsExist() == true)
+                        {
+                            departmentService.ShowAll();
+                            Console.WriteLine("Enter old Department ID :");
+                            int? departId = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Enter new Department name :");
+                            string? newDepartName = Convert.ToString(Console.ReadLine());
+                            Console.WriteLine("Enter new Max Employee count in new Department :");
+                            int employeeLimit = Convert.ToInt32(Console.ReadLine());
+                            departmentService.UpdateDepartment(departId, newDepartName, employeeLimit);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Department\n");
+                            Console.ResetColor();
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -303,15 +333,25 @@ if (username == Username && password == Password)
                 case (int)Menu.Get_employees_inDepartment:
                     try
                     {
-                        departmentService.ShowAll();
-                        Console.WriteLine("Enter Department ID :");
-                        int? departId = Convert.ToInt32(Console.ReadLine());
-                        departmentService.GetDepartmentEmployees(departId);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (departmentService.IsExist() == true)
+                        {
+                            departmentService.ShowAll();
+                            Console.WriteLine("Enter Department ID :");
+                            int? departId = Convert.ToInt32(Console.ReadLine());
+                            departmentService.GetDepartmentEmployees(departId);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Department\n");
+                            Console.ResetColor();
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -326,15 +366,25 @@ if (username == Username && password == Password)
                 case (int)Menu.Show_department_details:
                     try
                     {
-                        departmentService.ShowAll();
-                        Console.WriteLine("Enter Department ID :");
-                        int? departId = Convert.ToInt32(Console.ReadLine());
-                        departmentService.ShowDepartmentDetails(departId);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (departmentService.IsExist() == true)
+                        {
+                            departmentService.ShowAll();
+                            Console.WriteLine("Enter Department ID :");
+                            int? departId = Convert.ToInt32(Console.ReadLine());
+                            departmentService.ShowDepartmentDetails(departId);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Department\n");
+                            Console.ResetColor();
+                        }
+                       
                     }
                     catch (Exception ex)
                     {
@@ -347,12 +397,22 @@ if (username == Username && password == Password)
                     }
                     break;
                 case (int)Menu.Show_all_departments:
-                    departmentService.ShowAll();
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("-------------------------\n" +
-                                      "The process is successful\n" +
-                                      "-------------------------");
-                    Console.ResetColor();
+                    if (departmentService.IsExist() == true)
+                    {
+                        departmentService.ShowAll();
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        Console.WriteLine("-------------------------\n" +
+                                          "The process is successful\n" +
+                                          "-------------------------");
+                        Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("This process cannot be done,First create a Department\n");
+                        Console.ResetColor();
+                    }
+                    
                     break;
                 case (int)Menu.Create_employee:
                     try
