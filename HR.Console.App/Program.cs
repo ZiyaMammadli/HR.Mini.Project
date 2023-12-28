@@ -101,8 +101,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("-----------------------------------------------" +
-                                              "Create a company first and then deactivate it." +
+                            Console.WriteLine("-----------------------------------------------\n" +
+                                              "Create a company first and then deactivate it.\n" +
                                               "-----------------------------------------------\n");
                             Console.ResetColor();
                         }                       
@@ -135,8 +135,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("---------------------------------------------------" +
-                                              "This process cannot be done,First create a Company" +
+                            Console.WriteLine("---------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Company\n" +
                                               "---------------------------------------------------\n");
                             Console.ResetColor();
                         }                        
@@ -164,8 +164,8 @@ if (username == Username && password == Password)
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("---------------------------------------------------" +
-                                          "This process cannot be done,First create a Company" +
+                        Console.WriteLine("---------------------------------------------------\n" +
+                                          "This process cannot be done,First create a Company\n" +
                                           "---------------------------------------------------\n");
                         Console.ResetColor();
                     }
@@ -189,8 +189,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("---------------------------------------------------" +
-                                              "This process cannot be done,First create a Company" +
+                            Console.WriteLine("---------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Company\n" +
                                               "---------------------------------------------------\n");
                             Console.ResetColor();
                         }                        
@@ -208,19 +208,31 @@ if (username == Username && password == Password)
                 case (int)Menu.Create_department:
                     try
                     {
-                        Console.WriteLine("Enter new Department name :");
-                        string? name = Convert.ToString(Console.ReadLine());
-                        Console.WriteLine("Enter max Employee count :");
-                        int maxcount = Convert.ToInt32(Console.ReadLine());
-                        companyService.ShowAll();
-                        Console.WriteLine("Enter Company Id :");
-                        int id = Convert.ToInt32(Console.ReadLine());
-                        departmentService.Create(name, maxcount, id);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (departmentService.IsExist() == true)
+                        {
+                            Console.WriteLine("Enter new Department name :");
+                            string? name = Convert.ToString(Console.ReadLine());
+                            Console.WriteLine("Enter max Employee count :");
+                            int maxcount = Convert.ToInt32(Console.ReadLine());
+                            companyService.ShowAll();
+                            Console.WriteLine("Enter Company Id :");
+                            int id = Convert.ToInt32(Console.ReadLine());
+                            departmentService.Create(name, maxcount, id);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("---------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Company\n" +
+                                              "---------------------------------------------------\n");
+                            Console.ResetColor();
+                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -250,8 +262,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("------------------------------------------------------" +
-                                              "This process cannot be done,First create a Department" +
+                            Console.WriteLine("------------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Department\n" +
                                               "------------------------------------------------------\n");
                             Console.ResetColor();
                         }
@@ -288,8 +300,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("------------------------------------------------------" +
-                                              "This process cannot be done,First create a Department" +
+                            Console.WriteLine("------------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Department\n" +
                                               "------------------------------------------------------\n");
                             Console.ResetColor();
                         }
@@ -327,8 +339,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("------------------------------------------------------" +
-                                              "This process cannot be done,First create a Department" +
+                            Console.WriteLine("------------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Department\n" +
                                               "------------------------------------------------------\n");
                             Console.ResetColor();
                         }
@@ -362,8 +374,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("------------------------------------------------------" +
-                                              "This process cannot be done,First create a Department" +
+                            Console.WriteLine("------------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Department\n" +
                                               "------------------------------------------------------\n");
                             Console.ResetColor();
                         }
@@ -397,8 +409,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("------------------------------------------------------" +
-                                              "This process cannot be done,First create a Department" +
+                            Console.WriteLine("------------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Department\n" +
                                               "------------------------------------------------------\n");
                             Console.ResetColor();
                         }
@@ -427,8 +439,8 @@ if (username == Username && password == Password)
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("------------------------------------------------------" +
-                                          "This process cannot be done,First create a Department" +
+                        Console.WriteLine("------------------------------------------------------\n" +
+                                          "This process cannot be done,First create a Department\n" +
                                           "------------------------------------------------------\n");
                         Console.ResetColor();
                     }
@@ -478,8 +490,8 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("----------------------------------------------------" +
-                                              "This process cannot be done,First create a Employee" +
+                            Console.WriteLine("----------------------------------------------------\n" +
+                                              "This process cannot be done,First create a Employee\n" +
                                               "----------------------------------------------------\n");
                             Console.ResetColor();
                         }
@@ -508,8 +520,8 @@ if (username == Username && password == Password)
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("----------------------------------------------------" +
-                                          "This process cannot be done,First create a Employee" +
+                        Console.WriteLine("----------------------------------------------------\n" +
+                                          "This process cannot be done,First create a Employee\n" +
                                           "----------------------------------------------------\n");
                         Console.ResetColor();
                     }
@@ -536,9 +548,9 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("------------------------------------------------------" +
+                            Console.WriteLine("------------------------------------------------------\n" +
                                               "This process cannot be done,First create a Employee\n" +
-                                              "------------------------------------------------------");
+                                              "------------------------------------------------------\n");
                             Console.ResetColor();
                         }
                         
@@ -566,7 +578,7 @@ if (username == Username && password == Password)
                         Console.ForegroundColor = ConsoleColor.Red;
                         if (checkParsee == false) Console.WriteLine("\n" +
                                                                    "<<<< Only number should be entered. >>>>\n" +
-                                                                   ""); ;
+                                                                   "\n"); ;
                         Console.ResetColor();
                         switch (ooption)
                         {
@@ -625,8 +637,8 @@ if (username == Username && password == Password)
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("----------------------------------------------------" +
-                                          "This process cannot be done,First create a Employee" +
+                        Console.WriteLine("----------------------------------------------------\n" +
+                                          "This process cannot be done,First create a Employee\n" +
                                           "----------------------------------------------------\n");
                         Console.ResetColor();
                     }
