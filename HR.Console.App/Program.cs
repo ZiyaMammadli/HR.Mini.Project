@@ -101,10 +101,9 @@ if (username == Username && password == Password)
                         else
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Create a company first and then deactivate it.");
+                            Console.WriteLine("Create a company first and then deactivate it.\n");
                             Console.ResetColor();
-                        }
-                        
+                        }                       
                     }
                     catch (Exception ex)
                     {
@@ -119,15 +118,24 @@ if (username == Username && password == Password)
                 case (int)Menu.Get_all_department_inCompany:
                     try
                     {
-                        companyService.ShowAll();
-                        Console.WriteLine("Enter Company name :");
-                        string? name = Convert.ToString(Console.ReadLine());
-                        companyService.GetAllDepartment(name);
-                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                        Console.WriteLine("-------------------------\n" +
-                                          "The process is successful\n" +
-                                          "-------------------------");
-                        Console.ResetColor();
+                        if (companyService.IsExist() == true)
+                        {
+                            companyService.ShowAll();
+                            Console.WriteLine("Enter Company name :");
+                            string? name = Convert.ToString(Console.ReadLine());
+                            companyService.GetAllDepartment(name);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Company\n");
+                            Console.ResetColor();
+                        }                        
                     }
                     catch (Exception ex)
                     {
@@ -140,25 +148,44 @@ if (username == Username && password == Password)
                     }
                     break;
                 case (int)Menu.Show_all_company:
-                    companyService.ShowAll();
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
-                    Console.WriteLine("-------------------------\n" +
-                                      "The process is successful\n" +
-                                      "-------------------------");
-                    Console.ResetColor();
-                    break;
-                case (int)Menu.Find_company_with_id:
-                    try
+                    if (companyService.IsExist() == true)
                     {
-                        companyService.ShowAllCompanyId();
-                        Console.WriteLine("Enter Company Id :");
-                        int? id = Convert.ToInt32(Console.ReadLine());
-                        companyService.FindCompanyWithId(id);
+                        companyService.ShowAll();
                         Console.ForegroundColor = ConsoleColor.DarkGreen;
                         Console.WriteLine("-------------------------\n" +
                                           "The process is successful\n" +
                                           "-------------------------");
                         Console.ResetColor();
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("This process cannot be done,First create a Company\n");
+                        Console.ResetColor();
+                    }
+                    
+                    break;
+                case (int)Menu.Find_company_with_id:
+                    try
+                    {
+                        if (companyService.IsExist() == true)
+                        {
+                            companyService.ShowAllCompanyId();
+                            Console.WriteLine("Enter Company Id :");
+                            int? id = Convert.ToInt32(Console.ReadLine());
+                            companyService.FindCompanyWithId(id);
+                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                            Console.WriteLine("-------------------------\n" +
+                                              "The process is successful\n" +
+                                              "-------------------------");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("This process cannot be done,First create a Company\n");
+                            Console.ResetColor();
+                        }                        
                     }
                     catch (Exception ex)
                     {
