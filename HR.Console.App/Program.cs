@@ -10,7 +10,6 @@ string Password = "zm040";
 string adminName = "Ziya";
 string adminPassword = "ZM040";
 bool control = true;
-bool AdminControl = true;
 Start:
 Console.WriteLine("Enter username:");
 string? username = Convert.ToString(Console.ReadLine());
@@ -656,6 +655,7 @@ if (username == Username && password == Password)
                     break;
                 case (int)Menu.Open_Admin_panel:
                     Console.ForegroundColor = ConsoleColor.Green;
+                    bool AdminControl = true;
                     Console.WriteLine("\n" +
                                       "WELCOME ADMIN PANEL\n" +
                                       "\n");
