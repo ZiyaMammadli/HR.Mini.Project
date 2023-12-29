@@ -208,7 +208,7 @@ if (username == Username && password == Password)
                 case (int)Menu.Create_department:
                     try
                     {
-                        if (departmentService.IsExist() == true)
+                        if (companyService.IsExist() == true)
                         {
                             Console.WriteLine("Enter new Department name :");
                             string? name = Convert.ToString(Console.ReadLine());
