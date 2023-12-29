@@ -568,8 +568,11 @@ if (username == Username && password == Password)
                 case (int)Menu.Update_Employee_Salary:
                     if (employeservice.IsExist() == true)
                     {
-                        Console.WriteLine("1.Increase Salary\n" +
-                                      "2.Decrease Salary\n ");
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("\n" +
+                                          "1.Increase Salary\n" +
+                                          "2.Decrease Salary\n ");
+                        Console.ResetColor();
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         Console.WriteLine("Please enter the serial number of your chosen process :\n");
                         Console.ResetColor();
