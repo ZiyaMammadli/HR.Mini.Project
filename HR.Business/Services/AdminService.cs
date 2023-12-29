@@ -42,7 +42,7 @@ public class AdminService : IAdminService
         }
     }
 
-    public void ActivateCompany(string name)
+    public void ActivateCompany(string? name)
     {
         if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
         Company? dbcompany=HRDbContext.dbCompanies.Find(c => c.Name.ToLower() == name.ToLower());

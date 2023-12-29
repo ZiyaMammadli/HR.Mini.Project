@@ -32,6 +32,11 @@ public enum SalaryMenu
 public enum AdminMenu
 {
     Show_all_deactivate_company=1,
+    Activate_company,
     Show_all_deactivate_department,
-    Show_all_deaactivate_employee
+    Activate_department,
+    Show_all_deaactivate_employee,
+    Activate_employee,
+    Exit_and_go_menu,
+    Quit_project
 }
