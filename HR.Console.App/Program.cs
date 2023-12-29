@@ -4,9 +4,13 @@ using HR.Business.Utilities.Helper;
 CompanyService companyService = new();
 DepartmentService departmentService = new();
 EmployeeService employeservice = new();
+AdminService adminservice = new();
 string Username = "ziya";
 string Password = "zm040";
+string adminName = "Ziya";
+string adminPassword = "ZM040";
 bool control = true;
+bool AdminControl = true;
 Start:
 Console.WriteLine("Enter username:");
 string? username = Convert.ToString(Console.ReadLine());
@@ -46,7 +50,11 @@ if (username == Username && password == Password)
                       "15.Show all Employees\n" +
                       "16.Change the Employee's Department\n" +
                       "17.Update Employee salary\n" +
-                      "18.Quit\n");
+                      "\n" +
+                      "\n" +
+                      "<< Admin Panel >>\n" +
+                      "18.Open Admin panel\n" +
+                      "19.Quit\n");
         Console.ResetColor();
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Please enter the serial number of your chosen process:");
@@ -58,7 +66,7 @@ if (username == Username && password == Password)
                                                    "<<<< Only number should be entered. >>>>\n" +
                                                    ""); ;
         Console.ResetColor();
-        if (option <= 18 && option > 0)
+        if (option <= 19 && option > 0)
         {
             switch (option)
             {
@@ -643,6 +651,82 @@ if (username == Username && password == Password)
                         Console.WriteLine("----------------------------------------------------\n" +
                                           "This process cannot be done,First create a Employee\n" +
                                           "----------------------------------------------------\n");
+                        Console.ResetColor();
+                    }
+                    break;
+                case (int)Menu.Open_Admin_panel:
+                    Console.WriteLine("\n" +
+                                      "Welcome Admin Panel\n" +
+                                      "\n");
+                    Console.WriteLine("Enter Username :");
+                    string? AdminName = Convert.ToString(Console.ReadLine());
+                    Console.WriteLine("Enter Password :");
+                    string? AdminPassword = Convert.ToString(Console.ReadLine());
+                    if (adminName == AdminName && adminPassword == AdminPassword)
+                    {
+                        while (AdminControl == true)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine("\n" +
+                                              "1. Show all deactivate Companies\n" +
+                                              "2. Show all deactivate Departments\n" +
+                                              "3. Show all deactivate Employees\n");
+                            Console.ResetColor();
+                            Console.ForegroundColor = ConsoleColor.Cyan;
+                            Console.WriteLine("Please enter the serial number of your chosen process :\n");
+                            Console.ResetColor();
+                            string? OptioN = Console.ReadLine();
+                            bool checkParsee = int.TryParse(OptioN, out int optioN);
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            if (checkParsee == false) Console.WriteLine("\n" +
+                                                                       "<<<< Only number should be entered. >>>>\n" +
+                                                                       "\n"); ;
+                            Console.ResetColor();
+                            if(optioN<3 || optioN > 0)
+                            {
+                                switch (optioN)
+                                {
+                                    case (int)AdminMenu.Show_all_deactivate_company:
+                                        adminservice.ShowAllDeactivateCompany();
+                                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                        Console.WriteLine("-------------------------\n" +
+                                                          "The process is successful\n" +
+                                                          "-------------------------");
+                                        Console.ResetColor();
+                                        break;
+                                    case (int)AdminMenu.Show_all_deactivate_department:
+                                        adminservice.ShowAllDeactivateDepartment();
+                                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                        Console.WriteLine("-------------------------\n" +
+                                                          "The process is successful\n" +
+                                                          "-------------------------");
+                                        Console.ResetColor();
+                                        break;
+                                    case (int)AdminMenu.Show_all_deaactivate_employee:
+                                        adminservice.ShowAllDeactivateEmployee();
+                                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                        Console.WriteLine("-------------------------\n" +
+                                                          "The process is successful\n" +
+                                                          "-------------------------");
+                                        Console.ResetColor();
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Numbers from 0 to 2 (2 inclusive) must be entered.\n");
+                                Console.ResetColor();
+                            }
+                            
+                        }
+                        
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Incorrect Passsword or Username\n" +
+                                          "");
                         Console.ResetColor();
                     }
                     break;

@@ -20,6 +20,7 @@ namespace HR.Business.Utilities.Helper
         Show_all_employees,
         Change_department,
         Update_Employee_Salary,//____________________________
+        Open_Admin_panel,                //Admin
         Quit                             //Quit
     }                          
 }
@@ -27,4 +28,10 @@ public enum SalaryMenu
 {
     increase = 1,
     decrease
+}
+public enum AdminMenu
+{
+    Show_all_deactivate_company=1,
+    Show_all_deactivate_department,
+    Show_all_deaactivate_employee
 }
