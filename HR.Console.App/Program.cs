@@ -682,7 +682,7 @@ if (username == Username && password == Password)
                                                                        "<<<< Only number should be entered. >>>>\n" +
                                                                        "\n"); ;
                             Console.ResetColor();
-                            if(optioN<3 || optioN > 0)
+                            if(optioN<4 || optioN > 0)
                             {
                                 switch (optioN)
                                 {
@@ -715,12 +715,10 @@ if (username == Username && password == Password)
                             else
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Numbers from 0 to 2 (2 inclusive) must be entered.\n");
+                                Console.WriteLine("Numbers from 0 to 3 (3 inclusive) must be entered.\n");
                                 Console.ResetColor();
-                            }
-                            
-                        }
-                        
+                            }                            
+                        }                       
                     }
                     else
                     {
