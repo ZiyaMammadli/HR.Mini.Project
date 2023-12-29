@@ -659,7 +659,7 @@ if (username == Username && password == Password)
                     Console.WriteLine("\n" +
                                       "WELCOME ADMIN PANEL\n" +
                                       "\n");
-                    Console.ResetColor();
+                    Console.ResetColor();                   
                     Console.WriteLine("Enter Username :");
                     string? AdminName = Convert.ToString(Console.ReadLine());
                     Console.WriteLine("Enter Password :");
@@ -704,6 +704,7 @@ if (username == Username && password == Password)
                                     case (int)AdminMenu.Activate_company:
                                         try
                                         {
+                                            adminservice.ShowAllDeactivateCompany();
                                             Console.WriteLine("Enter Company name :");
                                             string? companyName = Convert.ToString(Console.ReadLine());
                                             adminservice.ActivateCompany(companyName);
@@ -734,6 +735,7 @@ if (username == Username && password == Password)
                                     case (int)AdminMenu.Activate_department:
                                         try
                                         {
+                                            adminservice.ShowAllDeactivateDepartment();
                                             Console.WriteLine("Enter Department ID :");
                                             int? departID = Convert.ToInt32(Console.ReadLine());
                                             adminservice.ActivateDepartment(departID);
@@ -764,6 +766,7 @@ if (username == Username && password == Password)
                                     case (int)AdminMenu.Activate_employee:
                                         try
                                         {
+                                            adminservice.ShowAllDeactivateEmployee();
                                             Console.WriteLine("Enter Employee ID :");
                                             int? employeeID = Convert.ToInt32(Console.ReadLine());
                                             adminservice.ActivateEmployee(employeeID);
