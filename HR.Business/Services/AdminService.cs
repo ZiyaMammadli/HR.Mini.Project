@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using System.Xml.Linq;
 using HR.Business.Interfaces;
 using HR.Business.Utilities.Exceptions;
@@ -64,6 +65,51 @@ public class AdminService : IAdminService
         Employee? dbemployee = HRDbContext.dbEmployees.Find(c => c.Id == EmployeeID);
         if (dbemployee is null) throw new NotFoundException($"{EmployeeID} is not found");
         dbemployee.IsActivate = true;
+    }
+
+    public void DeleteCompany(string? companyName)
+    {
+        if (string.IsNullOrEmpty(companyName)) throw new ArgumentNullException();
+        Company? dbcompany =HRDbContext.dbCompanies.Find(c => c.Name.ToLower() == companyName.ToLower());
+        if (dbcompany is null) throw new NotFoundException($"{companyName} is not found");
+        if (dbcompany.IsActivate == false)
+        {
+           HRDbContext.dbCompanies.Remove(dbcompany);
+        }
+        else
+        {
+            throw new NotFoundException($"{companyName} is not found");
+        }
+    }
+
+    public void DeleteDepartment(int? departID)
+    {
+        if (departID is null) throw new ArgumentNullException();
+        Department? dbcdepartment = HRDbContext.dbDepartments.Find(c => c.Id == departID);
+        if (dbcdepartment is null) throw new NotFoundException($"{departID} is not found");     
+        if (dbcdepartment.IsActivated == false)
+        {
+            HRDbContext.dbDepartments.Remove(dbcdepartment);
+        }
+        else
+        {
+            throw new NotFoundException($"{departID} is not found");
+        }
+    }
+
+    public void DeleteEmployee(int? employeeID)
+    {
+        if (employeeID is null) throw new ArgumentNullException();
+        Employee? dbemployee = HRDbContext.dbEmployees.Find(c => c.Id == employeeID);
+        if (dbemployee is null) throw new NotFoundException($"{employeeID} is not found");
+        if (dbemployee.IsActivate == false)
+        {
+            HRDbContext.dbEmployees.Remove(dbemployee);
+        }
+        else
+        {
+            throw new NotFoundException($"{employeeID} is not found");
+        }
     }
 }
 

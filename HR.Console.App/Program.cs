@@ -17,13 +17,14 @@ Console.WriteLine("Enter password");
 string? password = Convert.ToString(Console.ReadLine());
 if (username == Username && password == Password)
 {
+    Console.Clear();
     Console.WriteLine("");
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("Welcome to HR project\n" +
                      "");
     Console.ResetColor();
     while (control == true)
-    {
+    {        
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("<<< COMPANY >>>\n" +
                       "1.Create new Company\n" +
@@ -654,6 +655,7 @@ if (username == Username && password == Password)
                     }
                     break;
                 case (int)Menu.Open_Admin_panel:
+                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     bool AdminControl = true;
                     Console.WriteLine("\n" +
@@ -666,18 +668,22 @@ if (username == Username && password == Password)
                     string? AdminPassword = Convert.ToString(Console.ReadLine());
                     if (adminName == AdminName && adminPassword == AdminPassword)
                     {
+                        Console.Clear();
                         while (AdminControl == true)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.WriteLine("\n" +
                                               "1. Show all deactivate Companies\n" +
                                               "2. Activate the Company\n" +
-                                              "3. Show all deactivate Departments\n" +
-                                              "4. Activate the Department\n" +
-                                              "5. Show all deactivate Employees\n" +
-                                              "6. Activate the Employee\n" +
-                                              "7. Exit and go to the previous Menu\n" +
-                                              "8. Quit Project\n");
+                                              "3. Delete the deactivated Company from the database\n" +
+                                              "4. Show all deactivate Departments\n" +
+                                              "5. Activate the Department\n" +
+                                              "6. Delete the deactivated Department from the database\n" +
+                                              "7. Show all deactivate Employees\n" +
+                                              "8. Activate the Employee\n" +
+                                              "9. Delete the deactivated Employee from the database\n" +
+                                              "10. Exit and go to the previous Menu\n" +
+                                              "11. Quit Project\n");
                             Console.ResetColor();
                             Console.ForegroundColor = ConsoleColor.Cyan;
                             Console.WriteLine("Please enter the serial number of your chosen process :\n");
@@ -689,7 +695,7 @@ if (username == Username && password == Password)
                                                                        "<<<< Only number should be entered. >>>>\n" +
                                                                        "\n"); ;
                             Console.ResetColor();
-                            if(optioN<9 || optioN > 0)
+                            if(optioN<12 || optioN > 0)
                             {
                                 switch (optioN)
                                 {
@@ -724,6 +730,29 @@ if (username == Username && password == Password)
                                             goto case (int)AdminMenu.Activate_company;
                                         }
                                         break;
+                                    case (int)AdminMenu.Delete_deactive_company:
+                                        try
+                                        {
+                                            adminservice.ShowAllDeactivateCompany();
+                                            Console.WriteLine("Enter Company name :");
+                                            string? companyName = Convert.ToString(Console.ReadLine());
+                                            adminservice.DeleteCompany(companyName);
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.WriteLine("-------------------------\n" +
+                                                              "The process is successful\n" +
+                                                              "-------------------------");
+                                            Console.ResetColor();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine($"-------------------------------\n" +
+                                                              $"{ex.Message}\n" +
+                                                              $"-------------------------------");
+                                            Console.ResetColor();
+                                            goto case (int)AdminMenu.Delete_deactive_company;
+                                        }
+                                        break;
                                     case (int)AdminMenu.Show_all_deactivate_department:
                                         adminservice.ShowAllDeactivateDepartment();
                                         Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -753,6 +782,29 @@ if (username == Username && password == Password)
                                                               $"-------------------------------");
                                             Console.ResetColor();
                                             goto case (int)AdminMenu.Activate_department;
+                                        }
+                                        break;
+                                    case (int)AdminMenu.Delete_deactive_department:
+                                        try
+                                        {
+                                            adminservice.ShowAllDeactivateDepartment();
+                                            Console.WriteLine("Enter Department ID :");
+                                            int? departID = Convert.ToInt32(Console.ReadLine());
+                                            adminservice.DeleteDepartment(departID);
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.WriteLine("-------------------------\n" +
+                                                              "The process is successful\n" +
+                                                              "-------------------------");
+                                            Console.ResetColor();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine($"-------------------------------\n" +
+                                                              $"{ex.Message}\n" +
+                                                              $"-------------------------------");
+                                            Console.ResetColor();
+                                            goto case (int)AdminMenu.Delete_deactive_department;
                                         }
                                         break;
                                     case (int)AdminMenu.Show_all_deaactivate_employee:
@@ -786,6 +838,29 @@ if (username == Username && password == Password)
                                             goto case (int)AdminMenu.Activate_employee;
                                         }
                                         break;
+                                    case (int)AdminMenu.Delete_deactive_employee:
+                                        try
+                                        {
+                                            adminservice.ShowAllDeactivateEmployee();
+                                            Console.WriteLine("Enter Employee ID :");
+                                            int? employeeID = Convert.ToInt32(Console.ReadLine());
+                                            adminservice.DeleteEmployee(employeeID);
+                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                            Console.WriteLine("-------------------------\n" +
+                                                              "The process is successful\n" +
+                                                              "-------------------------");
+                                            Console.ResetColor();
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine($"-------------------------------\n" +
+                                                              $"{ex.Message}\n" +
+                                                              $"-------------------------------");
+                                            Console.ResetColor();
+                                            goto case (int)AdminMenu.Delete_deactive_employee;
+                                        }
+                                        break;
                                     case (int)AdminMenu.Exit_and_go_menu:
                                         AdminControl = false;
                                         break;
@@ -800,7 +875,7 @@ if (username == Username && password == Password)
                             else
                             {
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Numbers from 0 to 8 (8 inclusive) must be entered.\n");
+                                Console.WriteLine("Numbers from 0 to 11 (11 inclusive) must be entered.\n");
                                 Console.ResetColor();
                             }                            
                         }                       

@@ -33,10 +33,13 @@ public enum AdminMenu
 {
     Show_all_deactivate_company=1,
     Activate_company,
+    Delete_deactive_company,
     Show_all_deactivate_department,
     Activate_department,
+    Delete_deactive_department,
     Show_all_deaactivate_employee,
     Activate_employee,
+    Delete_deactive_employee,
     Exit_and_go_menu,
     Quit_project
 }
