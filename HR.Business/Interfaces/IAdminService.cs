@@ -12,5 +12,8 @@ public interface IAdminService
     public void DeleteCompany(string? companyName);
     public void DeleteDepartment(int? departID);
     public void DeleteEmployee(int? employeeID);
+    public bool IsExistDeactiveCompany();
+    public bool IsExistDeactiveDepartment();
+    public bool IsExistDeactiveEmployee();
 }
 

@@ -6,9 +6,9 @@ DepartmentService departmentService = new();
 EmployeeService employeservice = new();
 AdminService adminservice = new();
 string Username = "ziya";
-string Password = "zm040";
+string Password = "040";
 string adminName = "Ziya";
-string adminPassword = "ZM040";
+string adminPassword = "z040";
 bool control = true;
 Start:
 Console.WriteLine("Enter username:");
@@ -97,6 +97,7 @@ if (username == Username && password == Password)
                     {
                         if (companyService.IsExist() == true)
                         {
+                            companyService.ShowAll();
                             Console.WriteLine("Enter Company name :");
                             string? name = Convert.ToString(Console.ReadLine());
                             companyService.Deactive(name);
@@ -655,7 +656,6 @@ if (username == Username && password == Password)
                     }
                     break;
                 case (int)Menu.Open_Admin_panel:
-                    Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Green;
                     bool AdminControl = true;
                     Console.WriteLine("\n" +
@@ -668,7 +668,6 @@ if (username == Username && password == Password)
                     string? AdminPassword = Convert.ToString(Console.ReadLine());
                     if (adminName == AdminName && adminPassword == AdminPassword)
                     {
-                        Console.Clear();
                         while (AdminControl == true)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -695,30 +694,53 @@ if (username == Username && password == Password)
                                                                        "<<<< Only number should be entered. >>>>\n" +
                                                                        "\n"); ;
                             Console.ResetColor();
-                            if(optioN<12 || optioN > 0)
+                            if(optioN<12 && optioN > 0)
                             {
                                 switch (optioN)
                                 {
                                     case (int)AdminMenu.Show_all_deactivate_company:
-                                        adminservice.ShowAllDeactivateCompany();
-                                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                        Console.WriteLine("-------------------------\n" +
-                                                          "The process is successful\n" +
-                                                          "-------------------------");
-                                        Console.ResetColor();
-                                        break;
-                                    case (int)AdminMenu.Activate_company:
-                                        try
+                                        if (adminservice.IsExistDeactiveCompany() == true)
                                         {
                                             adminservice.ShowAllDeactivateCompany();
-                                            Console.WriteLine("Enter Company name :");
-                                            string? companyName = Convert.ToString(Console.ReadLine());
-                                            adminservice.ActivateCompany(companyName);
                                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                                             Console.WriteLine("-------------------------\n" +
                                                               "The process is successful\n" +
                                                               "-------------------------");
+                                            Console.ResetColor();                                           
+                                        }
+                                        else
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("-----------------------------------------------------------\n" +
+                                                              "This process cannot be done,There isn't deactivate Company\n" +
+                                                              "-----------------------------------------------------------\n");
                                             Console.ResetColor();
+                                        }
+                                        break;
+                                    case (int)AdminMenu.Activate_company:
+                                        try
+                                        {
+                                            if (adminservice.IsExistDeactiveCompany() == true)
+                                            {
+                                                adminservice.ShowAllDeactivateCompany();
+                                                Console.WriteLine("Enter Company name :");
+                                                string? companyName = Convert.ToString(Console.ReadLine());
+                                                adminservice.ActivateCompany(companyName);
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.WriteLine("-------------------------\n" +
+                                                                  "The process is successful\n" +
+                                                                  "-------------------------");
+                                                Console.ResetColor();
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("-----------------------------------------------------------\n" +
+                                                                  "This process cannot be done,There isn't deactivate Company\n" +
+                                                                  "-----------------------------------------------------------\n");
+                                                Console.ResetColor();
+                                            }
+                                            
                                         }
                                         catch (Exception ex)
                                         {
@@ -733,15 +755,27 @@ if (username == Username && password == Password)
                                     case (int)AdminMenu.Delete_deactive_company:
                                         try
                                         {
-                                            adminservice.ShowAllDeactivateCompany();
-                                            Console.WriteLine("Enter Company name :");
-                                            string? companyName = Convert.ToString(Console.ReadLine());
-                                            adminservice.DeleteCompany(companyName);
-                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                            Console.WriteLine("-------------------------\n" +
-                                                              "The process is successful\n" +
-                                                              "-------------------------");
-                                            Console.ResetColor();
+                                            if (adminservice.IsExistDeactiveCompany() == true)
+                                            {
+                                                adminservice.ShowAllDeactivateCompany();
+                                                Console.WriteLine("Enter Company name :");
+                                                string? companyName = Convert.ToString(Console.ReadLine());
+                                                adminservice.DeleteCompany(companyName);
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.WriteLine("-------------------------\n" +
+                                                                  "The process is successful\n" +
+                                                                  "-------------------------");
+                                                Console.ResetColor();
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("-----------------------------------------------------------\n" +
+                                                                  "This process cannot be done,There isn't deactivate Company\n" +
+                                                                  "-----------------------------------------------------------\n");
+                                                Console.ResetColor();
+                                            }
+                                           
                                         }
                                         catch (Exception ex)
                                         {
@@ -754,25 +788,61 @@ if (username == Username && password == Password)
                                         }
                                         break;
                                     case (int)AdminMenu.Show_all_deactivate_department:
-                                        adminservice.ShowAllDeactivateDepartment();
-                                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                        Console.WriteLine("-------------------------\n" +
-                                                          "The process is successful\n" +
-                                                          "-------------------------");
-                                        Console.ResetColor();
-                                        break;
-                                    case (int)AdminMenu.Activate_department:
-                                        try
+                                        if (adminservice.IsExistDeactiveDepartment() == true)
                                         {
                                             adminservice.ShowAllDeactivateDepartment();
-                                            Console.WriteLine("Enter Department ID :");
-                                            int? departID = Convert.ToInt32(Console.ReadLine());
-                                            adminservice.ActivateDepartment(departID);
                                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                                             Console.WriteLine("-------------------------\n" +
                                                               "The process is successful\n" +
                                                               "-------------------------");
                                             Console.ResetColor();
+                                        }
+                                        else
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("--------------------------------------------------------------\n" +
+                                                              "This process cannot be done,There isn't deactivate Department\n" +
+                                                              "--------------------------------------------------------------\n");
+                                            Console.ResetColor();
+                                        }
+                                        
+                                        break;
+                                    case (int)AdminMenu.Activate_department:
+                                        try
+                                        {
+                                            if (adminservice.IsExistDeactiveDepartment() == true)
+                                            {
+                                                if (companyService.IsExist() == true)
+                                                {
+                                                    adminservice.ShowAllDeactivateDepartment();
+                                                    Console.WriteLine("Enter Department ID :");
+                                                    int? departID = Convert.ToInt32(Console.ReadLine());
+                                                    adminservice.ActivateDepartment(departID);
+                                                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                    Console.WriteLine("-------------------------\n" +
+                                                                      "The process is successful\n" +
+                                                                      "-------------------------");
+                                                    Console.ResetColor();
+                                                }
+                                                else
+                                                {
+                                                    Console.ForegroundColor = ConsoleColor.Red;
+                                                    Console.WriteLine("--------------------------------------------------------\n" +
+                                                                      "This process cannot be done,There isn't activate Company\n" +
+                                                                      "--------------------------------------------------------\n");
+                                                    Console.ResetColor();
+                                                }
+                                                
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("--------------------------------------------------------------\n" +
+                                                                  "This process cannot be done,There isn't deactivate Department\n" +
+                                                                  "--------------------------------------------------------------\n");
+                                                Console.ResetColor();
+                                            }
+                                            
                                         }
                                         catch (Exception ex)
                                         {
@@ -787,15 +857,27 @@ if (username == Username && password == Password)
                                     case (int)AdminMenu.Delete_deactive_department:
                                         try
                                         {
-                                            adminservice.ShowAllDeactivateDepartment();
-                                            Console.WriteLine("Enter Department ID :");
-                                            int? departID = Convert.ToInt32(Console.ReadLine());
-                                            adminservice.DeleteDepartment(departID);
-                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                            Console.WriteLine("-------------------------\n" +
-                                                              "The process is successful\n" +
-                                                              "-------------------------");
-                                            Console.ResetColor();
+                                            if (adminservice.IsExistDeactiveDepartment() == true)
+                                            {
+                                                adminservice.ShowAllDeactivateDepartment();
+                                                Console.WriteLine("Enter Department ID :");
+                                                int? departID = Convert.ToInt32(Console.ReadLine());
+                                                adminservice.DeleteDepartment(departID);
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.WriteLine("-------------------------\n" +
+                                                                  "The process is successful\n" +
+                                                                  "-------------------------");
+                                                Console.ResetColor();
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("--------------------------------------------------------------\n" +
+                                                                  "This process cannot be done,There isn't deactivate Department\n" +
+                                                                  "--------------------------------------------------------------\n");
+                                                Console.ResetColor();
+                                            }
+                                            
                                         }
                                         catch (Exception ex)
                                         {
@@ -808,25 +890,49 @@ if (username == Username && password == Password)
                                         }
                                         break;
                                     case (int)AdminMenu.Show_all_deaactivate_employee:
-                                        adminservice.ShowAllDeactivateEmployee();
-                                        Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                        Console.WriteLine("-------------------------\n" +
-                                                          "The process is successful\n" +
-                                                          "-------------------------");
-                                        Console.ResetColor();
-                                        break;
-                                    case (int)AdminMenu.Activate_employee:
-                                        try
+                                        if (adminservice.IsExistDeactiveDepartment() == true)
                                         {
                                             adminservice.ShowAllDeactivateEmployee();
-                                            Console.WriteLine("Enter Employee ID :");
-                                            int? employeeID = Convert.ToInt32(Console.ReadLine());
-                                            adminservice.ActivateEmployee(employeeID);
                                             Console.ForegroundColor = ConsoleColor.DarkGreen;
                                             Console.WriteLine("-------------------------\n" +
                                                               "The process is successful\n" +
                                                               "-------------------------");
                                             Console.ResetColor();
+                                        }
+                                        else
+                                        {
+                                            Console.ForegroundColor = ConsoleColor.Red;
+                                            Console.WriteLine("--------------------------------------------------------------\n" +
+                                                              "This process cannot be done,There isn't deactivate Employee\n" +
+                                                              "--------------------------------------------------------------\n");
+                                            Console.ResetColor();
+                                        }
+                                        
+                                        break;
+                                    case (int)AdminMenu.Activate_employee:
+                                        try
+                                        {
+                                            if (adminservice.IsExistDeactiveEmployee() == true)
+                                            {
+                                                adminservice.ShowAllDeactivateEmployee();
+                                                Console.WriteLine("Enter Employee ID :");
+                                                int? employeeID = Convert.ToInt32(Console.ReadLine());
+                                                adminservice.ActivateEmployee(employeeID);
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.WriteLine("-------------------------\n" +
+                                                                  "The process is successful\n" +
+                                                                  "-------------------------");
+                                                Console.ResetColor();
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("--------------------------------------------------------------\n" +
+                                                                  "This process cannot be done,There isn't deactivate Employee\n" +
+                                                                  "--------------------------------------------------------------\n");
+                                                Console.ResetColor();
+                                            }
+                                            
                                         }
                                         catch (Exception ex)
                                         {
@@ -841,15 +947,27 @@ if (username == Username && password == Password)
                                     case (int)AdminMenu.Delete_deactive_employee:
                                         try
                                         {
-                                            adminservice.ShowAllDeactivateEmployee();
-                                            Console.WriteLine("Enter Employee ID :");
-                                            int? employeeID = Convert.ToInt32(Console.ReadLine());
-                                            adminservice.DeleteEmployee(employeeID);
-                                            Console.ForegroundColor = ConsoleColor.DarkGreen;
-                                            Console.WriteLine("-------------------------\n" +
-                                                              "The process is successful\n" +
-                                                              "-------------------------");
-                                            Console.ResetColor();
+                                            if (adminservice.IsExistDeactiveEmployee() == true)
+                                            {
+                                                adminservice.ShowAllDeactivateEmployee();
+                                                Console.WriteLine("Enter Employee ID :");
+                                                int? employeeID = Convert.ToInt32(Console.ReadLine());
+                                                adminservice.DeleteEmployee(employeeID);
+                                                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                                                Console.WriteLine("-------------------------\n" +
+                                                                  "The process is successful\n" +
+                                                                  "-------------------------");
+                                                Console.ResetColor();
+                                            }
+                                            else
+                                            {
+                                                Console.ForegroundColor = ConsoleColor.Red;
+                                                Console.WriteLine("--------------------------------------------------------------\n" +
+                                                                  "This process cannot be done,There isn't deactivate Employee\n" +
+                                                                  "--------------------------------------------------------------\n");
+                                                Console.ResetColor();
+                                            }
+                                            
                                         }
                                         catch (Exception ex)
                                         {
@@ -868,7 +986,8 @@ if (username == Username && password == Password)
                                         Console.ForegroundColor = ConsoleColor.Green;
                                         Console.WriteLine("Thanks for choosing us..MADE İN AZERBAİJAN");
                                         Console.ResetColor();
-                                        control = false;
+                                        AdminControl = false;
+                                        control = false;                          
                                         break;
                                 }
                             }

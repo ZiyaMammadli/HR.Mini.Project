@@ -69,6 +69,7 @@ public class DepartmentService : IDepartmentService,ICompanyDepartmentEmployee
             if (dbdepartment.Id == employee.DepartmentId)
             {
                 employee.DepartmentId = null;
+                dbdepartment.CurrentEmployee--;
             }
         }
         dbdepartment.IsActivated = false;

@@ -12,7 +12,7 @@ public class CompanyService : ICompanyService,ICompanyDepartmentEmployee
     {
         if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
         Company? dbcompany = HRDbContext.dbCompanies.Find(b => b.Name.ToLower() == name.ToLower());
-        if (dbcompany is not null) throw new AlreadyExistException($"{dbcompany} already is exist");
+        if (dbcompany is not null) throw new AlreadyExistException($"{name} already is exist");
         Company company = new Company(name);
         HRDbContext.dbCompanies.Add(company);
         company.IsActivate = true;

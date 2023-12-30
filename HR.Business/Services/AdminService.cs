@@ -111,5 +111,41 @@ public class AdminService : IAdminService
             throw new NotFoundException($"{employeeID} is not found");
         }
     }
+
+    public bool IsExistDeactiveCompany()
+    {
+        foreach (var company in HRDbContext.dbCompanies)
+        {
+            if (company.IsActivate == false)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool IsExistDeactiveDepartment()
+    {
+        foreach (var department in HRDbContext.dbDepartments)
+        {
+            if (department.IsActivated == false)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool IsExistDeactiveEmployee()
+    {
+        foreach (var employee in HRDbContext.dbEmployees)
+        {
+            if (employee.IsActivate == false)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
